@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="es.albarregas.modelo.Libro" table="libro1an"> 
+     <id column="idLibro" name="id" type="integer"/>
+     <property name="titulo" length="40" not-null="true"/>
+     <property name="direccionCorreo" />¡
+        <many-to-one name="persona">
+                <column name="idPersona"  />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
