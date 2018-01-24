@@ -36,31 +36,38 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         DAOFactory daof = DAOFactory.getDAOFactory();
         IPersonaDAO pdao = daof.getPersonaDAO();
-        ILibroDAO ldao = daof.getLibroDAO();
         Persona persona = new Persona();
-        Libro libro = new Libro();
-        ArrayList<Libro> libros = new ArrayList<Libro>();
+        Libro libro1 = new Libro();
+        Libro libro2 = new Libro();
+        Libro libro3 = new Libro();
+        List<Libro> libros = new ArrayList<Libro>();
         String url = null;
+        
         switch (request.getParameter("op")) {
             case "add":
-
                 try {
-//
-//                    BeanUtils.populate(libro, request.getParameterMap());
+                    
                     BeanUtils.populate(persona, request.getParameterMap());
-                    libro.setTitulo(request.getParameter("libro1"));
-                    libro.setTitulo(request.getParameter("libro2"));
-                    libro.setTitulo(request.getParameter("libro3"));
-                    libros.add(libro);
+                    libro1.setTitulo(request.getParameter("titulo1"));
+                    libro2.setTitulo(request.getParameter("titulo2"));
+                    libro3.setTitulo(request.getParameter("titulo3"));
+//                    BeanUtils.populate(libro1, request.getParameterMap());
+//                    BeanUtils.populate(libro2, request.getParameterMap());
+//                    BeanUtils.populate(libro3, request.getParameterMap());
 
                 } catch (IllegalAccessException | InvocationTargetException ex) {
                     ex.printStackTrace();
                 }
-                libro.setPersona(persona);
+                libros.add(libro1);
+                libros.add(libro2);
+                libros.add(libro3);
                 persona.setLibros(libros);
                 pdao.add(persona);
+                
+                
                 url = "index.html";
                 break;
             case "delete":
@@ -71,19 +78,9 @@ public class Controlador extends HttpServlet {
                 url = "index.html";
                 break;
             case "update":
-                try {
-                    BeanUtils.populate(persona, request.getParameterMap());
-                    libro.setTitulo(request.getParameter("libro1"));
-                    libro.setTitulo(request.getParameter("libro2"));
-                    libro.setTitulo(request.getParameter("libro3"));
-                    libro.setPersona(persona);
-                    libros.add(libro);
-                    persona.setLibros(libros);
-
-                } catch (IllegalAccessException | InvocationTargetException ex) {
-                    ex.printStackTrace();
-                }
                 persona = pdao.getOne(Integer.parseInt(request.getParameter("registro")));
+                System.out.println(persona.toString());
+                System.out.println(persona.getLibros());
                 request.setAttribute("persona", persona);
                 url = "JSP/formularioActualizar.jsp";
                 break;

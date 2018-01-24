@@ -1,5 +1,6 @@
 package es.albarregas.controllers;
 
+import es.albarregas.beans.Libro;
 import es.albarregas.dao.IGenericoDAO;
 import es.albarregas.daofactory.DAOFactory;
 import es.albarregas.beans.Persona;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.beanutils.BeanUtils;
 import es.albarregas.dao.IPersonaDAO;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -36,6 +39,10 @@ public class Conclusion extends HttpServlet {
         IPersonaDAO pdao = daof.getPersonaDAO();
 //        IGenericoDAO gdao = daof.getGenericoDAO();
         Persona persona = new Persona();
+        Libro libro1 = new Libro();
+        Libro libro2 = new Libro();
+        Libro libro3 = new Libro();
+        List<Libro> libros = new ArrayList<Libro>();
         String url = null;
         switch (request.getParameter("op")) {
             
@@ -49,11 +56,17 @@ public class Conclusion extends HttpServlet {
             case "update":
                 try {
                     BeanUtils.populate(persona, request.getParameterMap());
+                    libro1.setTitulo(request.getParameter("titulo1"));
+                    libro2.setTitulo(request.getParameter("titulo2"));
+                    libro3.setTitulo(request.getParameter("titulo3"));
 
                 } catch (IllegalAccessException | InvocationTargetException ex) {
                     ex.printStackTrace();
                 }
-//                adao.update(profesor);
+                libros.add(libro1);
+                libros.add(libro2);
+                libros.add(libro3);
+                persona.setLibros(libros);
                 pdao.update(persona);
                 url = "index.html";
                 break;

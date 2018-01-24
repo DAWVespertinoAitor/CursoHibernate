@@ -13,20 +13,15 @@
     <body>
 
         <div id="principal">
-            <h2>Listado de profesores</h2>
-
-
-
-
+            <h2>Listado</h2>
             <dl>
-                <c:forEach var="item" items="${listado}">
+                <c:forEach var="item" items="${listadoPer}">
 
 
                     <dt>${item.nombre}</dt>
                     <dd>
-                        Libros ${item.libro.calle}, ${item.libro.numero} - ${item.libro.poblacion}
-                        <c:forEach var="listaLibro" items="${item.libro}">
-                            <c:out value="${listaLibro}"/>
+                        <c:forEach var="listaLibro" items="${item.libros}">
+                            <c:out value="${listaLibro.titulo}"/>
                         </c:forEach>
                     </dd>
 

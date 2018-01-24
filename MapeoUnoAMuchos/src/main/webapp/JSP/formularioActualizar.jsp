@@ -25,16 +25,16 @@
                     <td><input type="text" name="nombre" value="${persona.nombre}" /></td>
                 </tr>
                 <tr>
-                    <td>Apellido 1</td>
-                    <td><input type="text" name="ape1" value="${profesor.ape1}" /></td>
+                    <td>Libro 1</td>
+                    <td><input type="text" name="titulo1" value="${persona.libros[0].titulo}" /></td>
                 </tr>
                 <tr>
-                    <td>Apellido 2</td>
-                    <td><input type="text" name="ape2" value="${profesor.ape2}" /></td>
+                    <td>Libro 2</td>
+                    <td><input type="text" name="titulo2" value="${persona.libros[1].titulo}" /></td>
                 </tr>
                 <tr>
-                    <td>Calle</td>
-                    <td><input type="text" name="calle" value="${persona.libro.titulo}" /></td>
+                    <td>Libro 3</td>
+                    <td><input type="text" name="titulo3" value="${persona.libros[2].titulo}" /></td>
                 </tr>
                 <tr>
                     <td colspan="2"><input type="submit" name="enviar" value="Enviar" class="boton" /></td>

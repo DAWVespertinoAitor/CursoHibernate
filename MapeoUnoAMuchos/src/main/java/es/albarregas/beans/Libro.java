@@ -5,8 +5,11 @@
  */
 package es.albarregas.beans;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,24 +24,20 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "libro1an")
-public class Libro {
+public class Libro implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="idLibro")
-    private int id;
+    private int idLibro;
     @Column(name="titulo")
     private String titulo;
-    @Column(name="persona")
-    @ManyToOne
-    @JoinColumn(name="idPersona")
-    private Persona persona;
 
     public Libro() {
     }
 
-    public Libro(int id, String titulo, Persona persona) {
-        this.id = id;
+    public Libro(int idLibro, String titulo) {
+        this.idLibro = idLibro;
         this.titulo = titulo;
-        this.persona = persona;
     }
 
     public String getTitulo() {
@@ -49,20 +48,12 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public int getId() {
-        return id;
+    public int getIdLibro() {
+        return idLibro;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setIdLibro(int idLibro) {
+        this.idLibro = idLibro;
     }
     
     

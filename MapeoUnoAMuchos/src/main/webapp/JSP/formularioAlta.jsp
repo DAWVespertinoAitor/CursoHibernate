@@ -7,7 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Actualizar</title>
+        <title>Insertar</title>
         <link rel="stylesheet" type="text/css" href="${contexto}/CSS/estilo.css" />
     </head>
     <body>
@@ -25,15 +25,15 @@
                 </tr>
                 <tr>
                     <td>Libro 1</td>
-                    <td><input type="text" name="libro1"/></td>
+                    <td><input type="text" name="titulo1"/></td>
                 </tr>
                 <tr>
                     <td>Libro 2</td>
-                    <td><input type="text" name="libro2"/></td>
+                    <td><input type="text" name="titulo2"/></td>
                 </tr>
                 <tr>
                     <td>Libro 3</td>
-                    <td><input type="text" name="libro3"/></td>
+                    <td><input type="text" name="titulo3"/></td>
                 </tr>
                 <!--<input type="hidden" name="idDirec" value="1" />-->
                 <tr>

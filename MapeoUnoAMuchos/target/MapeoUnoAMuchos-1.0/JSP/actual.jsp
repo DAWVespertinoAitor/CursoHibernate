@@ -19,10 +19,13 @@
 
             <form method="post" action="control?op=update">
                 <table>
-                    <c:forEach var="item" items="${listado}">
+                    <c:forEach var="item" items="${listadoPer}">
                         <tr>
-                            <td><input type="radio" name="registro" value="${item.id}" /></td>
-                            <td>${item.nombre} ${item.ape1} ${item.ape2}</td>
+                            <td><input type="radio" name="registro" scope="request" value="${item.id}" /></td>
+                            <td><c:out value="${item.nombre}"/></td>
+                            <c:forEach var="listaLibro" items="${listadoLib}">
+                                <td><c:out value="${listaLibro.titulo}"/></td>
+                            </c:forEach>
                         </tr>
                     </c:forEach>
                     <tr>

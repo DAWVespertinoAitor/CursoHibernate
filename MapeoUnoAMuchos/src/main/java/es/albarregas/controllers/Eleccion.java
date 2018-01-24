@@ -43,6 +43,7 @@ public class Eleccion extends HttpServlet {
         DAOFactory daof = DAOFactory.getDAOFactory();
 //        IGenericoDAO gdao = daof.getGenericoDAO();
         IPersonaDAO pdao = daof.getPersonaDAO();
+        ILibroDAO ldao = daof.getLibroDAO();
         switch(request.getParameter("op")){
             case "add":
                 url = "JSP/formularioAlta.jsp";
@@ -50,15 +51,10 @@ public class Eleccion extends HttpServlet {
             case "delete":
             case "update":
             case "list":
-//                String entidad = "Profesor";
-                List<Persona> listaPuer = pdao.get(); //new ArrayList<>();
-//                List<Object> lista = pdao.get(entidad);
-//                for(Object profesor : lista){
-//                    listaProf.add((Profesor)profesor);
-//                }
-//                listaProf = pdao.get();
-                request.setAttribute("listado", listaPuer);
                 
+                List<Persona> listaPer = pdao.get();
+                request.setAttribute("listadoPer", listaPer);
+                break;
             
         }
         switch(request.getParameter("op")){
